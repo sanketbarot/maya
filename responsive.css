@@ -158,7 +158,6 @@
     .navbar { padding: 15px 20px; }
     .navbar.scrolled { padding: 10px 20px; }
 
-    /* Navbar scrolled glass adjustment */
     .navbar.scrolled {
         background: rgba(10, 10, 15, 0.6);
         backdrop-filter: blur(40px);
@@ -244,7 +243,6 @@
     .skill-card  { padding: 20px 15px; }
     .skill-icon-wrapper { width: 50px; height: 50px; margin-bottom: 15px; }
     .skill-icon  { font-size: 20px; }
-    .skill-ring  { width: 60px; height: 60px; }
     .skill-name  { font-size: 12px; }
 
     .skill-tabs { gap: 8px; margin-bottom: 30px; }
@@ -453,7 +451,6 @@
     .quote-text  { font-size: 14px; }
     .about-description { font-size: 13px; line-height: 1.7; }
 
-    /* Info items glass */
     .info-item {
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -605,7 +602,6 @@
     .skill-name  { font-size: 11px; letter-spacing: 0.5px; }
     .skill-icon-wrapper { width: 45px; height: 45px; margin-bottom: 12px; }
     .skill-icon  { font-size: 18px; }
-    .skill-ring  { width: 55px; height: 55px; }
     .skill-percent { font-size: 10px; }
     .skill-tab { padding: 5px 12px; font-size: 8px; }
 
@@ -755,14 +751,6 @@
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
     }
-    .loader-cube { width: 45px; height: 45px; }
-    .cube-face { width: 45px; height: 45px; }
-    .cube-face.front  { transform: translateZ(22px); }
-    .cube-face.back   { transform: rotateY(180deg) translateZ(22px); }
-    .cube-face.right  { transform: rotateY(90deg) translateZ(22px); }
-    .cube-face.left   { transform: rotateY(-90deg) translateZ(22px); }
-    .cube-face.top    { transform: rotateX(90deg) translateZ(22px); }
-    .cube-face.bottom { transform: rotateX(-90deg) translateZ(22px); }
     .loader-text { font-size: 10px; letter-spacing: 4px; }
     .loader-bar  { width: 160px; }
 
@@ -829,7 +817,6 @@
     .skill-icon-wrapper { width: 40px; height: 40px; margin: 0; flex-shrink: 0; }
     .skill-icon     { font-size: 16px; }
     .skill-icon-bg  { width: 40px; height: 40px; }
-    .skill-ring     { width: 50px; height: 50px; }
     .skill-name     { min-height: auto; margin-bottom: 8px; }
     .skill-bar      { margin-top: 5px; }
     .skill-tab      { padding: 4px 10px; font-size: 7px; }
@@ -963,7 +950,6 @@
         -webkit-backdrop-filter: blur(30px);
     }
 
-    /* Glass adjustments for landscape */
     .hero-title-box {
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
@@ -1004,7 +990,6 @@
    11. TOUCH DEVICE OVERRIDES
    ========================================== */
 @media (hover: none) and (pointer: coarse) {
-    /* Restore default cursors */
     body { cursor: auto; }
 
     a, button, input, textarea, select,
@@ -1018,7 +1003,6 @@
 
     .cursor, .cursor-follower, .cursor-text { display: none !important; }
 
-    /* ── Disable hover transforms (flash on tap) ── */
     .hover-lift:hover { transform: none; box-shadow: var(--glass-shadow); }
 
     .skill-card:hover {
@@ -1033,10 +1017,6 @@
         background: rgba(var(--primary-rgb), 0.02);
     }
 
-    .skill-card:hover .skill-ring { opacity: 0; }
-    .skill-card:hover::before { transform: scaleX(0); }
-
-    .timeline-card:hover::before { height: 0; }
     .timeline-card:hover {
         background: rgba(255, 255, 255, 0.02);
         border-color: rgba(255, 255, 255, 0.05);
@@ -1045,7 +1025,6 @@
 
     .about-image-box:hover .about-image-border { top: 12px; left: 12px; }
     .about-image-box:hover .image-glitch-overlay { opacity: 0; }
-
     .btn:hover .btn-icon { transform: none; }
 
     .footer-socials a:hover {
@@ -1063,7 +1042,6 @@
         box-shadow: none;
     }
 
-    /* Portfolio hover glass */
     .portfolio-card:hover {
         transform: none;
         box-shadow: var(--glass-shadow);
@@ -1071,35 +1049,30 @@
         background: rgba(255, 255, 255, 0.02);
     }
 
-    /* Contact card hover */
     .contact-card:hover {
         border-color: rgba(255, 255, 255, 0.05);
         background: rgba(255, 255, 255, 0.02);
         box-shadow: var(--glass-shadow);
     }
 
-    /* Info item hover */
     .info-item:hover {
         border-color: rgba(255, 255, 255, 0.05);
         background: rgba(255, 255, 255, 0.02);
         box-shadow: none;
     }
 
-    /* Education card hover */
     .education-card:hover {
         border-color: rgba(255, 255, 255, 0.05);
         background: rgba(255, 255, 255, 0.02);
         box-shadow: var(--glass-shadow);
     }
 
-    /* Mirror shine on hover — disable for touch */
+    /* Disable mirror shines on hover for touch */
     .timeline-card:hover::after { opacity: 0; }
     .contact-card:hover::before { opacity: 0; }
     .info-item:hover::before    { opacity: 0; }
     .education-card:hover::after { opacity: 0; }
     .portfolio-card:hover .portfolio-overlay { opacity: 0; }
-
-    /* Active tap shows overlay briefly */
     .portfolio-card:active .portfolio-overlay { opacity: 1; }
 
     /* Better tap targets — minimum 44px */
@@ -1167,7 +1140,6 @@
         background: rgba(var(--primary-rgb), 0.06);
     }
 
-    /* Glass buttons on touch */
     .portfolio-view-btn,
     .portfolio-link-btn,
     .filter-btn,
@@ -1213,7 +1185,6 @@
     .page-progress { height: 2px; }
     .form-line     { height: 1px; }
 
-    /* Sharper glass borders on retina */
     .timeline-card,
     .skill-card,
     .contact-card,
@@ -1228,7 +1199,6 @@
    13. PRINT STYLES
    ========================================== */
 @media print {
-    /* Hide all non-essential elements */
     .loader,
     .cursor,
     .cursor-follower,
@@ -1265,7 +1235,6 @@
     .philosophy-dots,
     .whatsapp-btn { display: none !important; }
 
-    /* Reset body */
     body {
         background: white !important;
         color: black !important;
@@ -1274,7 +1243,6 @@
         line-height: 1.5;
     }
 
-    /* Remove glass effects for print */
     * {
         background: transparent !important;
         color: black !important;
@@ -1286,35 +1254,25 @@
     }
 
     .container { max-width: 100%; padding: 0; }
-
     section { padding: 20px 0; page-break-inside: avoid; }
-
     .about-content,
     .contact-content { grid-template-columns: 1fr; gap: 20px; }
-
     .skills-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
-    /* Show links */
     a[href]::after { content: " (" attr(href) ")"; font-size: 10pt; color: #666 !important; }
     a[href^="#"]::after, a[href^="javascript"]::after { content: ""; }
 
-    /* Page breaks */
     h1, h2, h3, h4 { page-break-after: avoid; }
     .skill-card, .timeline-item, .contact-card { page-break-inside: avoid; }
 
-    /* Skill bars */
     .skill-bar      { border: 1px solid #ccc !important; }
     .skill-bar-fill { background: #333 !important; }
 
-    /* Hero */
     .hero { min-height: auto; padding: 30px 0; }
     .name-first, .name-last { font-size: 28pt; -webkit-text-fill-color: black !important; }
-
-    /* Timeline */
     .timeline { padding-left: 20px; }
     .timeline-dot { border-color: #333 !important; }
 
-    /* Remove mirror pseudo-elements */
     .timeline-card::before,
     .timeline-card::after,
     .skill-card::before,

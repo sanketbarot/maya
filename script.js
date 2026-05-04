@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // LOADER
     // ==========================================
-    const loader      = document.getElementById('loader');
-    const loaderBar   = document.getElementById('loaderBar');
+    const loader        = document.getElementById('loader');
+    const loaderBar     = document.getElementById('loaderBar');
     const loaderPercent = document.getElementById('loaderPercent');
-    let loadProgress  = 0;
+    let loadProgress    = 0;
 
     const loaderInterval = setInterval(() => {
         loadProgress += Math.random() * 15;
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 initAnimations();
             }, 500);
         }
-        loaderBar.style.width   = loadProgress + '%';
+        loaderBar.style.width     = loadProgress + '%';
         loaderPercent.textContent = Math.floor(loadProgress) + '%';
     }, 150);
 
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mouseX = e.clientX;
             mouseY = e.clientY;
             cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
-            // Move cursor text with mouse
             if (cursorText) {
                 cursorText.style.left = mouseX + 'px';
                 cursorText.style.top  = mouseY + 'px';
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mousedown', () => cursor.classList.add('click'));
         document.addEventListener('mouseup',   () => cursor.classList.remove('click'));
 
-        // Hover effects on interactive elements
         document.querySelectorAll(
             'a, button, .btn, .skill-card, .portfolio-card, ' +
             '.filter-btn, .skill-tab, .contact-card, .timeline-card, ' +
@@ -71,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('mouseleave', () => follower.classList.remove('hover'));
         });
 
-        // Text hover effects
         document.querySelectorAll('.hero-name, .section-title').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 follower.classList.add('hover-text');
@@ -84,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Glass card special cursor effect
         document.querySelectorAll('.portfolio-card').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 follower.classList.add('hover');
@@ -151,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         particles.forEach(p => { p.update(); p.draw(); });
 
-        // Draw connections with glass-like fading lines
         const rgb = getComputedStyle(document.documentElement)
             .getPropertyValue('--primary-rgb').trim();
 
@@ -201,37 +196,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobileMenu');
     const navLinks   = document.querySelectorAll('.nav-link, .mobile-link');
 
-    // Scroll effects
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
 
-        // Navbar glass intensity
         navbar.classList.toggle('scrolled', scrollY > 50);
 
-        // Page progress
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const progress  = (scrollY / docHeight) * 100;
         document.getElementById('pageProgress').style.width = progress + '%';
 
-        // Back to top
         const backToTop = document.getElementById('backToTop');
         backToTop.classList.toggle('visible', scrollY > 500);
-        const circle       = document.getElementById('backToTopCircle');
+        const circle        = document.getElementById('backToTopCircle');
         const circumference = 2 * Math.PI * 48;
         circle.style.strokeDashoffset = circumference - (progress / 100) * circumference;
 
-        // Floating buttons
         const floatingCV  = document.getElementById('floatingCVBtn');
         const whatsappBtn = document.getElementById('whatsappBtn');
         if (floatingCV)  floatingCV.classList.toggle('visible',  scrollY > 600);
         if (whatsappBtn) whatsappBtn.classList.toggle('visible', scrollY > 300);
 
-        // Active nav
         updateActiveNav();
         updateSectionCounter();
     });
 
-    // Hamburger
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         mobileMenu.classList.toggle('active');
@@ -239,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Nav links
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
@@ -272,7 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
         counter.textContent = String(index).padStart(2, '0');
     }
 
-    // Back to top
     document.getElementById('backToTop').addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -335,7 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const delay = entry.target.dataset.delay || 0;
                     setTimeout(() => {
                         entry.target.classList.add('visible');
-                        // Add glass shimmer effect on reveal
                         addGlassRevealEffect(entry.target);
                     }, parseInt(delay));
                 }
@@ -344,7 +329,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         reveals.forEach(el => observer.observe(el));
 
-        // Skill bars
         const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -363,7 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCounters();
     }
 
-    // Glass reveal shimmer effect
     function addGlassRevealEffect(el) {
         if (!el.classList.contains('skill-card') &&
             !el.classList.contains('timeline-card') &&
@@ -383,9 +366,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const el      = entry.target;
-                    const target  = parseInt(el.dataset.count);
-                    let current   = 0;
+                    const el        = entry.target;
+                    const target    = parseInt(el.dataset.count);
+                    let current     = 0;
                     const increment = target / 60;
                     const timer = setInterval(() => {
                         current += increment;
@@ -515,7 +498,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Download buttons
     const downloadPDF = document.getElementById('downloadPDF');
     const downloadDOC = document.getElementById('downloadDOC');
 
@@ -524,13 +506,13 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', (e) => {
                 if (btn.getAttribute('href') === '#' ||
                     btn.getAttribute('href').includes('assets/')) {
-                    // Show glass generating animation
-                    const generating = document.getElementById('cvGenerating');
-                    const success    = document.getElementById('cvSuccess');
 
                     if (!btn.getAttribute('href').includes('assets/')) {
                         e.preventDefault();
                     }
+
+                    const generating = document.getElementById('cvGenerating');
+                    const success    = document.getElementById('cvSuccess');
 
                     generating.classList.add('active');
                     setTimeout(() => {
@@ -555,17 +537,16 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Glass button loading state
-            const submitBtn = contactForm.querySelector('.btn-submit');
-            const originalText = submitBtn.querySelector('.btn-text').textContent;
+            const submitBtn      = contactForm.querySelector('.btn-submit');
+            const originalText   = submitBtn.querySelector('.btn-text').textContent;
             submitBtn.querySelector('.btn-text').textContent = 'SENDING...';
             submitBtn.style.opacity = '0.7';
-            submitBtn.disabled = true;
+            submitBtn.disabled      = true;
 
             setTimeout(() => {
                 submitBtn.querySelector('.btn-text').textContent = originalText;
                 submitBtn.style.opacity = '';
-                submitBtn.disabled = false;
+                submitBtn.disabled      = false;
                 showToast("Message sent! I'll get back to you soon.");
                 contactForm.reset();
             }, 1500);
@@ -582,25 +563,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         toastMessage.textContent = message;
 
-        // Update icon based on type
         if (toastIcon) {
             toastIcon.className = type === 'error'
                 ? 'fas fa-exclamation-circle'
                 : 'fas fa-check-circle';
         }
 
-        // Update border color
         toast.style.borderColor = type === 'error'
             ? 'rgba(255, 45, 117, 0.3)'
             : 'rgba(var(--primary-rgb), 0.2)';
 
         toast.classList.add('show');
 
-        // Reset progress bar animation
         const progress = toast.querySelector('.toast-progress');
         if (progress) {
             progress.style.animation = 'none';
-            progress.offsetHeight; // reflow
+            progress.offsetHeight;
             progress.style.animation = '';
         }
 
@@ -625,7 +603,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (filter === 'all' || category === filter) {
                     item.classList.remove('filter-hidden');
                     item.classList.add('filter-visible');
-                    // Staggered glass reveal
                     item.style.transitionDelay = (idx * 0.05) + 's';
                 } else {
                     item.classList.remove('filter-visible');
@@ -673,15 +650,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // TESTIMONIALS SLIDER — GLASS
     // ==========================================
-    const testimonialTrack        = document.getElementById('testimonialTrack');
-    const testimonialCards        = document.querySelectorAll('.testimonial-card');
+    const testimonialTrack         = document.getElementById('testimonialTrack');
+    const testimonialCards         = document.querySelectorAll('.testimonial-card');
     const testimonialDotsContainer = document.getElementById('testimonialDots');
     const prevBtn = document.querySelector('.testimonial-prev');
     const nextBtn = document.querySelector('.testimonial-next');
     let currentTestimonial  = 0;
     let testimonialInterval;
 
-    // Create dots
     if (testimonialDotsContainer && testimonialCards.length > 0) {
         testimonialCards.forEach((_, i) => {
             const dot = document.createElement('button');
@@ -728,7 +704,6 @@ document.addEventListener('DOMContentLoaded', () => {
         testimonialInterval = setInterval(nextTestimonial, 6000);
     }
 
-    // Touch swipe for testimonials
     let touchStartX = 0;
     if (testimonialTrack) {
         testimonialTrack.addEventListener('touchstart', (e) => {
@@ -758,7 +733,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLightboxIndex = 0;
     const projectData = [];
 
-    // Collect project data
     document.querySelectorAll('.portfolio-item').forEach((item) => {
         const overlay = item.querySelector('.portfolio-overlay-content');
         if (overlay) {
@@ -772,7 +746,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // View buttons
     document.querySelectorAll('.portfolio-view-btn').forEach((btn, i) => {
         btn.addEventListener('click', () => { openLightbox(i); });
     });
@@ -832,7 +805,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (!lightbox.classList.contains('active')) return;
         if (e.key === 'ArrowLeft')  lightboxPrev?.click();
@@ -887,7 +859,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.transform =
                     `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
 
-                // Dynamic mirror highlight based on mouse position
                 const shineX = (x * 100).toFixed(1);
                 const shineY = (y * 100).toFixed(1);
                 card.style.setProperty('--shine-x', shineX + '%');
@@ -904,7 +875,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // GLASS HOVER SHINE EFFECT
-    // (Dynamic mirror reflection on all glass cards)
     // ==========================================
     if (window.matchMedia('(pointer: fine)').matches) {
         const glassCards = document.querySelectorAll(
@@ -919,7 +889,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const x    = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
                 const y    = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
 
-                // Update the mirror shine position dynamically
                 card.style.background = `
                     radial-gradient(
                         circle at ${x}% ${y}%,
@@ -954,7 +923,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // GLASS CARD ENTRANCE GLOW
-    // (Subtle glow when cards become visible)
     // ==========================================
     const glowObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -987,11 +955,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // PERFORMANCE — PAUSE ANIMATIONS
-    // when tab is not visible
     // ==========================================
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-            // Pause heavy animations
             canvas.style.display = 'none';
         } else {
             canvas.style.display = 'block';
@@ -999,14 +965,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // RESIZE HANDLER — Update glass layouts
+    // RESIZE HANDLER
     // ==========================================
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             resizeCanvas();
-            // Re-trigger scroll for position updates
             window.dispatchEvent(new Event('scroll'));
         }, 250);
     });
