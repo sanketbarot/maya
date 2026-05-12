@@ -977,17 +977,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Play Video on Overlay Click
+// ===== Play Video on Overlay Click =====
 function playVideo(overlay) {
     const container = overlay.parentElement;
     const iframe = container.querySelector('iframe');
     let src = iframe.getAttribute('src');
 
+    // Add autoplay
     if (!src.includes('autoplay=1')) {
         src += (src.includes('?') ? '&' : '?') + 'autoplay=1';
         iframe.setAttribute('src', src);
     }
 
+    // Enable iframe interaction
     iframe.classList.add('active');
+
+    // Hide overlay
     overlay.classList.add('hidden');
 }
